@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Taibu44 & Sons Consulting</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --petal-pink: #F8BBD0;
+            --petal-lavender: #D1C4E9;
+            --petal-yellow: #FFF9C4;
+            --petal-blue: #BBDEFB;
+            --petal-green: #C8E6C9;
+            --dark-text: #333;
+            --light-text: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-text);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .nav-link {
+            color: var(--dark-text);
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--petal-pink), var(--petal-lavender));
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .about-hero {
+            background: linear-gradient(135deg, var(--petal-blue), var(--petal-green));
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('/api/placeholder/1500/1000') center/cover no-repeat;
+            opacity: 0.1;
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(90deg, var(--petal-pink), var(--petal-lavender));
+            border: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .vision-mission {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            height: 100%;
+            border-top: 4px solid transparent;
+            transition: transform 0.3s;
+        }
+        
+        .vision-mission:hover {
+            transform: translateY(-10px);
+        }
+        
+        .vision-mission.vision {
+            border-color: var(--petal-pink);
+        }
+        
+        .vision-mission.mission {
+            border-color: var(--petal-blue);
+        }
+        
+        .vision-mission.values {
+            border-color: var(--petal-green);
+        }
+        
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .icon-box.vision {
+            background-color: var(--petal-pink);
+            color: #C2185B;
+        }
+        
+        .icon-box.mission {
+            background-color: var(--petal-blue);
+            color: #1565C0;
+        }
+        
+        .icon-box.values {
+            background-color: var(--petal-green);
+            color: #2E7D32;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(180deg, var(--petal-pink), var(--petal-lavender), var(--petal-blue));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            background: white;
+            border: 4px solid var(--petal-pink);
+        }
+        
+        .timeline-left {
+            left: 0;
+        }
+        
+        .timeline-right {
+            left: 50%;
+        }
+        
+        .timeline-right::after {
+            left: -12px;
+            border-color: var(--petal-blue);
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .team-info h5 {
+            margin-bottom: 10px;
+        }
+        
+        .team-info p {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .team-social a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: var(--petal-lavender);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            margin: 0 5px;
+            color: var(--dark-text);
+            transition: all 0.3s;
+        }
+        
+        .team-social a:hover {
+            background-color: var(--petal-pink);
+            transform: translateY(-3px);
+        }
+        
+        .footer {
+            background-color: #2c3e50;
+            color: var(--light-text);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-title {
+            color: var(--light-text);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--petal-pink);
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: var(--light-text);
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--petal-pink);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-right {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Taibu44 & Sons</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4">About Taibu44 & Sons</h1>
+                    <p class="lead mb-0">Zimbabwe's Premier Consulting Firm Since 2010</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="/api/placeholder/600/400" alt="Our Story" class="img-fluid rounded-3 shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Our Story</h2>
+                    <p>Founded in 2010 by Mr. Taibu Murehwa, Taibu44 & Sons Consulting began as a small mining advisory firm in Harare. With a vision to support Zimbabwe's economic development through expert consultation, the company quickly expanded into new sectors.</p>
+                    <p>Over the years, we've grown from a team of 5 dedicated professionals to a comprehensive consulting powerhouse with over 50 experts across multiple disciplines. Our commitment to excellence and deep understanding of Zimbabwe's unique business landscape has established us as a trusted advisor to both private enterprises and government institutions.</p>
+                    <p>Today, Taibu44 & Sons stands at the forefront of consulting services in Zimbabwe, offering specialized expertise in mining, gold trade, information technology, and investment sectors. Our growth reflects our unwavering dedication to our clients' success and Zimbabwe's prosperity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision, Mission & Values Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Vision, Mission & Values</h2>
+                <p class="text-muted">The principles that guide everything we do</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="vision-mission vision">
+                        <div class="icon-box vision">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Our Vision</h4>
+                        <p>To be Zimbabwe's most trusted consulting partner, driving sustainable growth and innovation across key economic sectors.</p>
+                        <p>We envision a prosperous Zimbabwe where businesses and government institutions thrive through expert guidance, technological advancement, and strategic investment.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="vision-mission mission">
+                        <div class="icon-box mission">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h4>Our Mission</h4>
+                        <p>To deliver transformative consulting services that empower our clients to overcome challenges, seize opportunities, and achieve sustainable success.</p>
+                        <p>We combine global expertise with deep local insights to provide tailored solutions that address the unique needs of Zimbabwe's evolving market landscape.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="vision-mission values">
+                        <div class="icon-box values">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Our Values</h4>
+                        <ul class="ps-3">
+                            <li><strong>Integrity:</strong> We uphold the highest ethical standards in all our dealings.</li>
+                            <li><strong>Excellence:</strong> We strive for exceptional quality in every service we provide.</li>
+                            <li><strong>Innovation:</strong> We embrace creative solutions to complex challenges.</li>
+                            <li><strong>Collaboration:</strong> We believe in the power of partnership with our clients.</li>
+                            <li><strong>Accountability:</strong> We take responsibility for our actions and results.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Journey</h2>
+                <p class="text-muted">A timeline of Taibu44 & Sons' growth and achievements</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <h5>2010</h5>
+                        <p>Founded by Mr. Taibu Murehwa as a mining consultancy firm in Harare with a team of 5 consultants.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <h5>2012</h5>
+                        <p>Expanded services to include gold trade consultation, becoming one of the first specialized consultancies in this sector in Zimbabwe.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <h5>2015</h5>
+                        <p>Added IT consultation services to support Zimbabwe's growing digital transformation needs. Team expanded to 20 consultants.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <h5>2017</h5>
+                        <p>Opened a second office in Bulawayo to better serve clients throughout Zimbabwe. Began offering investment consultation services.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <h5>2020</h5>
+                        <p>Celebrated 10 years of service with over 300 successful projects completed. Received "Consulting Firm of the Year" award from Zimbabwe Business Excellence Awards.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <h5>2023</h5>
+                        <p>Expanded to 50+ consultants and formed strategic partnerships with international consulting firms to enhance service delivery to clients.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <h5>2025</h5>
+                        <p>Continuing to innovate and expand our service offerings to meet the evolving needs of Zimbabwe's dynamic business landscape.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Leadership Team</h2>
+                <p class="text-muted">Meet the experts driving Taibu44 & Sons' success</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300" alt="Team Member" class="team-img">
+                        <div class="team-info">
+                            <h5>Taibu Murehwa</h5>
+                            <p>Founder & CEO</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300" alt="Team Member" class="team-img">
+                        <div class="team-info">
+                            <h5>Farai Murehwa</h5>
+                            <p>Director, Mining Services</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300" alt="Team Member" class="team-img">
+                        <div class="team-info">
+                            <h5>Sarah Murehwa</h5>
+                            <p>Director, IT Services</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300" alt="Team Member" class="team-img">
+                        <div class="team-info">
+                            <h5>David Nyoni</h5>
+                            <p>Director, Investment Services</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-4">Ready to Work With Us?</h2>
+                    <p class="lead mb-4">Contact our team today to discuss how Taibu44 & Sons can help your business or project succeed in Zimbabwe's dynamic market.</p>
+                    <a href="contact.html" class="btn btn-gradient">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h4 class="footer-title">Taibu44 & Sons</h4>
+                    <p>Expert consultancy services for mining, gold trade, IT, and investment in Zimbabwe's private and government sectors.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Mining Consultation</a></li>
+                        <li><a href="services.html">Gold Trade Consultation</a></li>
+                        <li><a href="services.html">IT Consultation</a></li>
+                        <li><a href="services.html">Investment Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Samora Machel Ave, Harare</li>
+                        <li><i class="fas fa-phone me-2"></i> +263 242 123 456</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@taibu44consulting.co.zw</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center copyright">
+                <p>&copy; 2025 Taibu44 & Sons Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

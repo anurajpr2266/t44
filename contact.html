@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Taibu44 & Sons Consulting</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --petal-pink: #F8BBD0;
+            --petal-lavender: #D1C4E9;
+            --petal-yellow: #FFF9C4;
+            --petal-blue: #BBDEFB;
+            --petal-green: #C8E6C9;
+            --dark-text: #333;
+            --light-text: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-text);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .nav-link {
+            color: var(--dark-text);
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--petal-pink), var(--petal-lavender));
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .contact-hero {
+            background: linear-gradient(135deg, var(--petal-lavender), var(--petal-blue));
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .contact-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('/api/placeholder/1500/1000') center/cover no-repeat;
+            opacity: 0.1;
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(90deg, var(--petal-pink), var(--petal-lavender));
+            border: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .contact-info {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--petal-pink), var(--petal-lavender));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+        }
+        
+        .form-control {
+            border: none;
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(216, 180, 254, 0.3);
+            background-color: white;
+        }
+        
+        .footer {
+            background-color: #2c3e50;
+            color: var(--light-text);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-title {
+            color: var(--light-text);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--petal-pink);
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: var(--light-text);
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--petal-pink);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+        
+        .office-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            height: 100%;
+            transition: transform 0.3s;
+            border-left: 4px solid var(--petal-lavender);
+        }
+        
+        .office-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .map-container {
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .faq-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: var(--petal-lavender);
+            color: var(--dark-text);
+            box-shadow: none;
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--petal-lavender);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Taibu44 & Sons</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold text-white mb-4">Get In Touch With Us</h1>
+                    <p class="lead text-white mb-0">We're here to answer any questions about our consulting services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="contact-info">
+                        <h2 class="fw-bold mb-4">Contact Information</h2>
+                        <p class="mb-4">Reach out to our expert team for consultation inquiries or to schedule an appointment.</p>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Main Office</h5>
+                                <p class="mb-0">123 Samora Machel Avenue<br>Harare, Zimbabwe</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5>Phone Number</h5>
+                                <p class="mb-0">+263 242 123 456<br>+263 242 789 012</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email Address</h5>
+                                <p class="mb-0">info@taibu44consulting.co.zw<br>support@taibu44consulting.co.zw</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h5>Working Hours</h5>
+                                <p class="mb-0">Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h5>Follow Us</h5>
+                            <div class="d-flex mt-3">
+                                <a href="#" class="me-3" style="color: var(--dark-text);"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                <a href="#" class="me-3" style="color: var(--dark-text);"><i class="fab fa-twitter fa-lg"></i></a>
+                                <a href="#" class="me-3" style="color: var(--dark-text);"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                                <a href="#" style="color: var(--dark-text);"><i class="fab fa-instagram fa-lg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="contact-info">
+                        <h2 class="fw-bold mb-4">Send Us A Message</h2>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="subject" class="form-label">Subject <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="subject" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="service" class="form-label">Service of Interest</label>
+                                <select class="form-control" id="service">
+                                    <option selected>Select a service</option>
+                                    <option value="mining">Mining Consultation</option>
+                                    <option value="gold">Gold Trade Consultation</option>
+                                    <option value="it">IT Consultation</option>
+                                    <option value="investment">Investment Consultation</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Your Message <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="privacy" required>
+                                <label class="form-check-label" for="privacy">
+                                    I agree to the privacy policy and terms of service
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-gradient">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regional Offices -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Regional Offices</h2>
+                <p class="text-muted">Serving clients across Zimbabwe</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="office-card">
+                        <h4 class="mb-3">Harare Office (HQ)</h4>
+                        <p><i class="fas fa-map-marker-alt me-2"></i> 123 Samora Machel Avenue, Harare</p>
+                        <p><i class="fas fa-phone me-2"></i> +263 242 123 456</p>
+                        <p><i class="fas fa-envelope me-2"></i> harare@taibu44consulting.co.zw</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="office-card">
+                        <h4 class="mb-3">Bulawayo Office</h4>
+                        <p><i class="fas fa-map-marker-alt me-2"></i> 78 Fort Street, Bulawayo</p>
+                        <p><i class="fas fa-phone me-2"></i> +263 292 789 012</p>
+                        <p><i class="fas fa-envelope me-2"></i> bulawayo@taibu44consulting.co.zw</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="office-card">
+                        <h4 class="mb-3">Mutare Office</h4>
+                        <p><i class="fas fa-map-marker-alt me-2"></i> 45 Second Street, Mutare</p>
+                        <p><i class="fas fa-phone me-2"></i> +263 202 345 678</p>
+                        <p><i class="fas fa-envelope me-2"></i> mutare@taibu44consulting.co.zw</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="map-container">
+                        <img src="/api/placeholder/1200/450" alt="Map location" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Frequently Asked Questions</h2>
+                <p class="text-muted">Find answers to common inquiries about our consulting services</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="faq-card">
+                        <div class="accordion" id="contactFAQ">
+                            <div class="accordion-item border-0 mb-3">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        What is the initial consultation process?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#contactFAQ">
+                                    <div class="accordion-body">
+                                        Our initial consultation begins with a face-to-face or virtual meeting to understand your specific needs. We'll discuss your goals, challenges, and expectations. Following this, our team will conduct a preliminary analysis and present a proposal outlining our recommended approach, timeline, and cost structure for your consideration.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item border-0 mb-3">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        How much do your consulting services cost?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#contactFAQ">
+                                    <div class="accordion-body">
+                                        Our consulting fees vary based on the scope, complexity, and duration of your project. We offer flexible pricing models including project-based fees, retainer arrangements, and hourly rates. After our initial consultation, we'll provide a detailed quotation tailored to your specific requirements and budget constraints.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item border-0 mb-3">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Do you offer consulting services for small businesses?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#contactFAQ">
+                                    <div class="accordion-body">
+                                        Absolutely! We provide tailored consulting solutions for businesses of all sizes, from startups to established enterprises. Our small business packages are designed to provide cost-effective expert guidance that addresses your specific challenges while fitting within your budget. We believe quality consulting should be accessible to growing businesses in Zimbabwe.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item border-0">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        What geographic areas do you serve?
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#contactFAQ">
+                                    <div class="accordion-body">
+                                        While our headquarters are in Harare, we provide consulting services throughout Zimbabwe with regional offices in Bulawayo and Mutare. We also serve clients in neighboring Southern African countries, leveraging our deep understanding of the regional business landscape. For international clients interested in Zimbabwe's markets, we offer specialized entry and operational guidance.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-4">Ready to Partner With Expert Consultants?</h2>
+                    <p class="lead mb-4">Our team is ready to help your business thrive in Zimbabwe's dynamic market environment.</p>
+                    <a href="#" class="btn btn-gradient">Schedule a Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h4 class="footer-title">Taibu44 & Sons</h4>
+                    <p>Expert consultancy services for mining, gold trade, IT, and investment in Zimbabwe's private and government sectors.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Mining Consultation</a></li>
+                        <li><a href="services.html">Gold Trade Consultation</a></li>
+                        <li><a href="services.html">IT Consultation</a></li>
+                        <li><a href="services.html">Investment Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Samora Machel Ave, Harare</li>
+                        <li><i class="fas fa-phone me-2"></i> +263 242 123 456</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@taibu44consulting.co.zw</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center copyright">
+                <p>&copy; 2025 Taibu44 & Sons Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

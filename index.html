@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taibu44 & Sons Consulting</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --petal-pink: #F8BBD0;
+            --petal-lavender: #D1C4E9;
+            --petal-yellow: #FFF9C4;
+            --petal-blue: #BBDEFB;
+            --petal-green: #C8E6C9;
+            --dark-text: #333;
+            --light-text: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-text);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .nav-link {
+            color: var(--dark-text);
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--petal-pink), var(--petal-lavender));
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--petal-lavender), var(--petal-pink));
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('/api/placeholder/1500/1000') center/cover no-repeat;
+            opacity: 0.1;
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(90deg, var(--petal-pink), var(--petal-lavender));
+            border: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .service-card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .service-card.mining {
+            border-color: var(--petal-yellow);
+        }
+        
+        .service-card.gold {
+            border-color: var(--petal-pink);
+        }
+        
+        .service-card.it {
+            border-color: var(--petal-blue);
+        }
+        
+        .service-card.investment {
+            border-color: var(--petal-green);
+        }
+        
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .icon-box.mining {
+            background-color: var(--petal-yellow);
+            color: #E6A800;
+        }
+        
+        .icon-box.gold {
+            background-color: var(--petal-pink);
+            color: #C2185B;
+        }
+        
+        .icon-box.it {
+            background-color: var(--petal-blue);
+            color: #1565C0;
+        }
+        
+        .icon-box.investment {
+            background-color: var(--petal-green);
+            color: #2E7D32;
+        }
+        
+        .testimonial {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 15px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            padding: 20px;
+        }
+        
+        .testimonial-content:before {
+            content: '\201C';
+            font-size: 60px;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: 'Playfair Display', serif;
+            color: var(--petal-lavender);
+            opacity: 0.5;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, var(--petal-blue), var(--petal-lavender));
+            padding: 60px 0;
+        }
+        
+        .counter-box {
+            text-align: center;
+            color: var(--dark-text);
+        }
+        
+        .counter-number {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .counter-text {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            background-color: #2c3e50;
+            color: var(--light-text);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-title {
+            color: var(--light-text);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--petal-pink);
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: var(--light-text);
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--petal-pink);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+        
+        /* About page styles */
+        .about-hero {
+            background: linear-gradient(135deg, var(--petal-blue), var(--petal-green));
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .about-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('/api/placeholder/1500/1000') center/cover no-repeat;
+            opacity: 0.1;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(180deg, var(--petal-pink), var(--petal-lavender), var(--petal-blue));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            background: white;
+            border: 4px solid var(--petal-pink);
+        }
+        
+        .timeline-left {
+            left: 0;
+        }
+        
+        .timeline-right {
+            left: 50%;
+        }
+        
+        .timeline-right::after {
+            left: -12px;
+            border-color: var(--petal-blue);
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .team-info h5 {
+            margin-bottom: 10px;
+        }
+        
+        .team-info p {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .team-social a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-color: var(--petal-lavender);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            margin: 0 5px;
+            color: var(--dark-text);
+            transition: all 0.3s;
+        }
+        
+        .team-social a:hover {
+            background-color: var(--petal-pink);
+            transform: translateY(-3px);
+        }
+        
+        /* Services page styles */
+        .services-hero {
+            background: linear-gradient(135deg, var(--petal-pink), var(--petal-yellow));
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .services-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('/api/placeholder/1500/1000') center/cover no-repeat;
+            opacity: 0.1;
+        }
+        
+        .service-full {
+            padding: 40px;
+            background-color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-left: 5px solid transparent;
+        }
+        
+        .service-full:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-full.mining {
+            border-color: var(--petal-yellow);
+        }
+        
+        .service-full.gold {
+            border-color: var(--petal-pink);
+        }
+        
+        .service-full.it {
+            border-color: var(--petal-blue);
+        }
+        
+        .service-full.investment {
+            border-color: var(--petal-green);
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .process-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -50%;
+            width: 100%;
+            border-top: 2px dashed var(--petal-lavender);
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--petal-pink), var(--petal-lavender));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            color: white;
+        }
+        
+        /* Contact page styles */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--petal-lavender), var(--petal-blue));
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .contact-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('/api/placeholder/1500/1000') center/cover no-repeat;
+            opacity: 0.1;
+        }
+        
+        .contact-info {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--petal-pink), var(--petal-lavender));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+        }
+        
+        .form-control {
+            border: none;
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(216, 180, 254, 0.3);
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Taibu44 & Sons</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Expert Consultancy for Zimbabwe's Growth</h1>
+                    <p class="lead mb-4">Specializing in Mining, Gold Trade, IT, and Investment consultation for both private and government projects in Zimbabwe.</p>
+                    <a href="contact.html" class="btn btn-gradient">Schedule a Consultation</a>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="/api/placeholder/600/400" alt="Taibu44 Consulting" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Services</h2>
+                <p class="text-muted">Comprehensive consulting solutions tailored for Zimbabwe's unique markets</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card mining">
+                        <div class="icon-box mining">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h4>Mining Consultation</h4>
+                        <p>Expert guidance on mining operations, regulatory compliance, and sustainable mining practices in Zimbabwe.</p>
+                        <a href="services.html" class="text-decoration-none">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card gold">
+                        <div class="icon-box gold">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h4>Gold Trade Consultation</h4>
+                        <p>Navigate Zimbabwe's gold market with our expertise in trading, regulation, and export processes.</p>
+                        <a href="services.html" class="text-decoration-none">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card it">
+                        <div class="icon-box it">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>IT Consultation</h4>
+                        <p>Cutting-edge IT solutions and strategies to drive digital transformation for Zimbabwean businesses.</p>
+                        <a href="services.html" class="text-decoration-none">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card investment">
+                        <div class="icon-box investment">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Investment Consultation</h4>
+                        <p>Strategic investment advice for private and public sectors in Zimbabwe's growing economy.</p>
+                        <a href="services.html" class="text-decoration-none">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="/api/placeholder/600/400" alt="About Taibu44" class="img-fluid rounded-3 shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Trusted Advisors Since 2010</h2>
+                    <p>Taibu44 & Sons Consulting has been a cornerstone of Zimbabwe's consulting landscape for over a decade, providing expert guidance across multiple sectors critical to the nation's development.</p>
+                    <p>Our team combines international expertise with deep local knowledge, ensuring our clients receive culturally appropriate and contextually relevant advice.</p>
+                    <div class="d-flex mt-4">
+                        <div class="me-4">
+                            <h3 class="fw-bold">14+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="me-4">
+                            <h3 class="fw-bold">500+</h3>
+                            <p>Satisfied Clients</p>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold">50+</h3>
+                            <p>Expert Consultants</p>
+                        </div>
+                    </div>
+                    <a href="about.html" class="btn btn-gradient mt-4">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">What Our Clients Say</h2>
+                <p class="text-muted">Hear from organizations we've helped across Zimbabwe</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="/api/placeholder/100/100" alt="Client" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Samuel Moyo</h5>
+                                <p class="text-muted mb-0">CEO, Harare Mining Corp</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Taibu44's mining consultation services transformed our operations. Their expertise in both technical aspects and regulatory compliance has been invaluable to our growth."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="/api/placeholder/100/100" alt="Client" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Grace Mutasa</h5>
+                                <p class="text-muted mb-0">Director, Bulawayo Gold Traders</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"The gold trade consultation provided by Taibu44 & Sons opened international markets for our business. Their guidance on export regulations saved us countless hours and resources."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="/api/placeholder/100/100" alt="Client" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Nelson Chiremba</h5>
+                                <p class="text-muted mb-0">CTO, Zimbabwe Tech Solutions</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Their IT consultation services helped us modernize our entire infrastructure. Taibu44's team understands Zimbabwe's unique IT challenges and provides practical solutions."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="counter-box">
+                        <div class="counter-number">500+</div>
+                        <div class="counter-text">Projects Completed</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="counter-box">
+                        <div class="counter-number">14+</div>
+                        <div class="counter-text">Years of Experience</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <div class="counter-number">350+</div>
+                        <div class="counter-text">Happy Clients</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-box">
+                        <div class="counter-number">10</div>
+                        <div class="counter-text">Provinces Covered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-4">Ready to Transform Your Business?</h2>
+                    <p class="lead mb-4">Contact our expert consultants today for a personalized consultation tailored to your specific needs in Zimbabwe's dynamic market.</p>
+                    <a href="contact.html" class="btn btn-gradient">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h4 class="footer-title">Taibu44 & Sons</h4>
+                    <p>Expert consultancy services for mining, gold trade, IT, and investment in Zimbabwe's private and government sectors.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Mining Consultation</a></li>
+                        <li><a href="services.html">Gold Trade Consultation</a></li>
+                        <li><a href="services.html">IT Consultation</a></li>
+                        <li><a href="services.html">Investment Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Samora Machel Ave, Harare</li>
+                        <li><i class="fas fa-phone me-2"></i> +263 242 123 456</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@taibu44consulting.co.zw</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center copyright">
+                <p>&copy; 2025 Taibu44 & Sons Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

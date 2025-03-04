@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Taibu44 & Sons Consulting</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --petal-pink: #F8BBD0;
+            --petal-lavender: #D1C4E9;
+            --petal-yellow: #FFF9C4;
+            --petal-blue: #BBDEFB;
+            --petal-green: #C8E6C9;
+            --dark-text: #333;
+            --light-text: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-text);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+        
+        .nav-link {
+            color: var(--dark-text);
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--petal-pink), var(--petal-lavender));
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .services-hero {
+            background: linear-gradient(135deg, var(--petal-pink), var(--petal-yellow));
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('/api/placeholder/1500/1000') center/cover no-repeat;
+            opacity: 0.1;
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(90deg, var(--petal-pink), var(--petal-lavender));
+            border: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .service-full {
+            padding: 40px;
+            background-color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-left: 5px solid transparent;
+        }
+        
+        .service-full:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-full.mining {
+            border-color: var(--petal-yellow);
+        }
+        
+        .service-full.gold {
+            border-color: var(--petal-pink);
+        }
+        
+        .service-full.it {
+            border-color: var(--petal-blue);
+        }
+        
+        .service-full.investment {
+            border-color: var(--petal-green);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        
+        .service-icon.mining {
+            background-color: var(--petal-yellow);
+            color: #E6A800;
+        }
+        
+        .service-icon.gold {
+            background-color: var(--petal-pink);
+            color: #C2185B;
+        }
+        
+        .service-icon.it {
+            background-color: var(--petal-blue);
+            color: #1565C0;
+        }
+        
+        .service-icon.investment {
+            background-color: var(--petal-green);
+            color: #2E7D32;
+        }
+        
+        .benefit-card {
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            height: 100%;
+            transition: transform 0.3s;
+            background-color: white;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .process-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -50%;
+            width: 100%;
+            border-top: 2px dashed var(--petal-lavender);
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--petal-pink), var(--petal-lavender));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            color: white;
+        }
+        
+        .footer {
+            background-color: #2c3e50;
+            color: var(--light-text);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-title {
+            color: var(--light-text);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--petal-pink);
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: var(--light-text);
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--petal-pink);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+        
+        .testimonial {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 15px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            padding: 20px;
+        }
+        
+        .testimonial-content:before {
+            content: '\201C';
+            font-size: 60px;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: 'Playfair Display', serif;
+            color: var(--petal-lavender);
+            opacity: 0.5;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .process-step:not(:last-child):after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Taibu44 & Sons</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4">Our Services</h1>
+                    <p class="lead mb-0">Comprehensive consulting solutions tailored for Zimbabwe's unique market needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Details Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <!-- Mining Consultation -->
+            <div class="service-full mining" id="mining">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+                        <div class="service-icon mining mx-auto mx-lg-0">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h3 class="mt-3">Mining Consultation</h3>
+                    </div>
+                    <div class="col-lg-8">
+                        <p>Our mining consultation services provide comprehensive expertise for companies operating in Zimbabwe's mining sector. With in-depth knowledge of local regulations and global best practices, we help clients navigate the complexities of mining operations in the region.</p>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Regulatory Compliance</h5>
+                                <p class="text-muted">Navigate Zimbabwe's mining regulations and ensure full compliance with all local and national requirements.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Operational Optimization</h5>
+                                <p class="text-muted">Improve efficiency and productivity through expert analysis and implementation of best practices.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Environmental Management</h5>
+                                <p class="text-muted">Develop sustainable mining practices that minimize environmental impact while maintaining profitability.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> License Acquisition</h5>
+                                <p class="text-muted">Expert guidance through the complex process of obtaining mining licenses and permits in Zimbabwe.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gold Trade Consultation -->
+            <div class="service-full gold" id="gold">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+                        <div class="service-icon gold mx-auto mx-lg-0">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3 class="mt-3">Gold Trade Consultation</h3>
+                    </div>
+                    <div class="col-lg-8">
+                        <p>Our gold trade consultation services help clients navigate Zimbabwe's gold market with confidence. We provide expert guidance on regulatory compliance, export procedures, and market access, enabling businesses to maximize opportunities in this valuable sector.</p>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Trade Regulations</h5>
+                                <p class="text-muted">Expert guidance on Zimbabwe's gold trade regulations and compliance requirements.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Export Facilitation</h5>
+                                <p class="text-muted">Streamline the export process with our comprehensive knowledge of documentation and procedures.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Market Access</h5>
+                                <p class="text-muted">Connect with reliable buyers and establish sustainable trading relationships locally and internationally.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Risk Management</h5>
+                                <p class="text-muted">Develop strategies to mitigate risks associated with gold trading in Zimbabwe's market.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IT Consultation -->
+            <div class="service-full it" id="it">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+                        <div class="service-icon it mx-auto mx-lg-0">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="mt-3">IT Consultation</h3>
+                    </div>
+                    <div class="col-lg-8">
+                        <p>Our IT consultation services help businesses in Zimbabwe leverage technology to drive growth and efficiency. We provide tailored solutions that address the unique challenges faced by organizations in the region, from infrastructure development to digital transformation strategies.</p>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Digital Transformation</h5>
+                                <p class="text-muted">Develop and implement strategies to modernize operations and embrace digital technologies.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> IT Infrastructure</h5>
+                                <p class="text-muted">Design and implement robust IT systems tailored to Zimbabwe's unique environment and challenges.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Cybersecurity</h5>
+                                <p class="text-muted">Protect your business with comprehensive security solutions designed for emerging markets.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Software Solutions</h5>
+                                <p class="text-muted">Custom software development and implementation to address specific business needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Consultation -->
+            <div class="service-full investment" id="investment">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+                        <div class="service-icon investment mx-auto mx-lg-0">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="mt-3">Investment Consultation</h3>
+                    </div>
+                    <div class="col-lg-8">
+                        <p>Our investment consultation services provide strategic guidance for businesses and individuals looking to invest in Zimbabwe's growing economy. With deep local knowledge and global expertise, we help clients identify and capitalize on opportunities across various sectors.</p>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Market Analysis</h5>
+                                <p class="text-muted">Comprehensive analysis of Zimbabwe's investment landscape and sector-specific opportunities.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Investment Strategy</h5>
+                                <p class="text-muted">Develop tailored investment strategies aligned with your goals and risk tolerance.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Due Diligence</h5>
+                                <p class="text-muted">Thorough assessment of potential investments to identify risks and opportunities.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-check-circle me-2 text-success"></i> Government Relations</h5>
+                                <p class="text-muted">Navigate relationships with government entities and understand policy implications for investments.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Approach Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Consultation Process</h2>
+                <p class="text-muted">A systematic approach designed to deliver exceptional results</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Discovery</h4>
+                        <p>We begin by understanding your specific needs, challenges, and objectives through in-depth discussions.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Analysis</h4>
+                        <p>Our experts conduct thorough research and analysis to identify opportunities and potential solutions.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Strategy</h4>
+                        <p>We develop a customized strategy and implementation plan tailored to your specific situation.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Implementation</h4>
+                        <p>Our team provides ongoing support to ensure successful execution and measurable results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Why Choose Taibu44 & Sons</h2>
+                <p class="text-muted">The advantages of partnering with Zimbabwe's premier consulting firm</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon" style="background-color: var(--petal-pink); color: #C2185B;">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4>Local Expertise</h4>
+                        <p>Deep understanding of Zimbabwe's business landscape, regulations, and cultural nuances that impact your operations.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon" style="background-color: var(--petal-blue); color: #1565C0;">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4>Global Standards</h4>
+                        <p>We apply international best practices and methodologies adapted to work effectively in the Zimbabwean context.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon" style="background-color: var(--petal-green); color: #2E7D32;">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Trusted Network</h4>
+                        <p>Access to our extensive network of industry contacts, government relationships, and business partners.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon" style="background-color: var(--petal-yellow); color: #E6A800;">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Experienced Team</h4>
+                        <p>Our consultants average over 10 years of industry experience in their respective fields of expertise.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon" style="background-color: var(--petal-lavender); color: #7B1FA2;">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Innovative Solutions</h4>
+                        <p>Creative approaches that address the unique challenges of operating in Zimbabwe's dynamic environment.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon" style="background-color: var(--petal-pink); color: #C2185B;">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h4>Results-Driven</h4>
+                        <p>Our focus is on delivering measurable outcomes and tangible value to every client engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Client Success Stories</h2>
+                <p class="text-muted">Real results from our consulting services</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="/api/placeholder/100/100" alt="Client" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Tatenda Nyamande</h5>
+                                <p class="text-muted mb-0">Operations Director, Midlands Mining Co.</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Taibu44's mining consultation services helped us increase production efficiency by 35% while ensuring full regulatory compliance. Their deep understanding of Zimbabwe's mining sector was invaluable to our operation's success."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="/api/placeholder/100/100" alt="Client" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Chido Marange</h5>
+                                <p class="text-muted mb-0">CEO, ZimTech Solutions</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"The IT consultation provided by Taibu44 & Sons transformed our business. Their tailored digital strategy helped us overcome infrastructure challenges and expand our customer base by 50% in just one year."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="/api/placeholder/100/100" alt="Client" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Emmanuel Sibanda</h5>
+                                <p class="text-muted mb-0">Finance Director, Gold Standard Traders</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Thanks to Taibu44's gold trade consultation, we successfully navigated complex regulations and expanded our international export channels. Their expertise in both local and international gold markets gave us a significant competitive advantage."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="/api/placeholder/100/100" alt="Client" class="testimonial-img me-3">
+                            <div>
+                                <h5 class="mb-0">Victoria Dube</h5>
+                                <p class="text-muted mb-0">Managing Partner, Harare Venture Capital</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Taibu44's investment consultation services provided us with critical insights that shaped our investment strategy in Zimbabwe. Their analysis of market opportunities and risk factors led to a 28% return on our portfolio in a challenging economic environment."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-4">Ready to Transform Your Business?</h2>
+                    <p class="lead mb-4">Contact our expert consultants today for a personalized consultation tailored to your specific needs in Zimbabwe's dynamic market.</p>
+                    <a href="contact.html" class="btn btn-gradient">Schedule a Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h4 class="footer-title">Taibu44 & Sons</h4>
+                    <p>Expert consultancy services for mining, gold trade, IT, and investment in Zimbabwe's private and government sectors.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Mining Consultation</a></li>
+                        <li><a href="services.html">Gold Trade Consultation</a></li>
+                        <li><a href="services.html">IT Consultation</a></li>
+                        <li><a href="services.html">Investment Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Samora Machel Ave, Harare</li>
+                        <li><i class="fas fa-phone me-2"></i> +263 242 123 456</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@taibu44consulting.co.zw</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center copyright">
+                <p>&copy; 2025 Taibu44 & Sons Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
